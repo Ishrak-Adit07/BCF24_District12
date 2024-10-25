@@ -16,3 +16,6 @@
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/aar-rafi/tick12_frontend.git
+[submodule "train_service_django"]
+	path = train_service_django
+	url = https://github.com/aar-rafi/tick12_train_service.git
