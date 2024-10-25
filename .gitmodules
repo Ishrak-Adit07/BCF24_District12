@@ -1,3 +1,18 @@
 [submodule "auth_service"]
 	path = auth_service
 	url = https://github.com/aar-rafi/tick12_auth_service.git
+[submodule "train_service"]
+	path = train_service
+	url = https://github.com/aar-rafi/tick12_train_service_2.git
+[submodule "ticket_service"]
+	path = ticket_service
+	url = https://github.com/aar-rafi/tick12_ticket_service.git
+[submodule "cache_service"]
+	path = cache_service
+	url = https://github.com/Irtiaz/tick12_cache_service.git
+[submodule "ticket_pricing_service"]
+	path = ticket_pricing_service
+	url = https://github.com/aar-rafi/tick12_ticket_pricing_service.git
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/aar-rafi/tick12_frontend.git
