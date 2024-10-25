@@ -1,108 +1,101 @@
-# Features Completed
+# Project Overview: Microservices Architecture
 
-## Microservices Architecture
+## Features Completed
 
-### 1. Service-Oriented Architecture
+### 1. **Microservices Architecture**
+- **Service-Oriented Architecture**: 
+  - The backend is divided into multiple microservices:
+    - **auth-service**: Handles user authentication and validation (Node.js).
+    - **train-service**: Manages train information (Django).
+    - **ticket-service**: Facilitates the ticket booking process (Node.js).
+    - **pricing-service**: Manages ticket pricing (Node.js).
+    - **cache-service**: Manages ticket availability and ticket booking process locking at the cache level (Node.js).
+    - **web-service**: Serves the UI (Node.js).
+  - Each service is developed in separate repositories and operates independently.
 
-- The backend is divided into multiple microservices:
-  auth-service: handles user authenticaion and validatoin
-  train-service: handles train information
-  ticket-service: handles ticket booking process
-  pricing-service: handles ticket pricing
-  cache-service: handles ticket-availability and ticket-booking-process-locking at cache level, a wrapper service
-  web-service: ui service
+### 2. **Inter-Service Communication**
+- **HTTP Requests**: 
+  - Microservices communicate via HTTP requests, invoking operations or accessing shared data as needed.
+- **Middleware Integration**: 
+  - Middleware is implemented for handling HTTP requests, event publishing, and consumption to maintain a clean separation of concerns and promote reusability.
 
-- Services are developed in separate repositories and works independently
+---
 
-### 2. Inter-Service Communication
+### 3. **Containerization and Deployment Configurations**
+- **Containerization with Docker**: 
+  - The client (frontend) and backend microservices are containerized using Docker to ensure consistent deployment across different environments.
+  
+- **Cloud Deployment with Kubernetes**: 
+  - All services are deployed on DigitalOcean’s Kubernetes cluster.
+  - Kubernetes Deployment and Service YAML files are utilized for managing application lifecycle and networking.
 
-#### HTTP Requests
+- **Horizontal Pod Autoscaling (HPA)**: 
+  - HPA is configured for all microservices to automatically scale based on CPU utilization, ensuring optimal performance under varying loads.
 
-- Microservices communicate via HTTP requests when necessary to invoke operations on another service or access shared data.
+- **Resource Limitation**: 
+  - Resource limits are applied to all deployments to prevent resource exhaustion.
 
-#### Middleware Integration
+---
 
-- Middleware is implemented for handling HTTP requests, event publishing, and event consumption to ensure clean separation of concerns and reusability.
+### 4. **Testing**
+- **Functional Testing**: 
+  - Comprehensive test suites are written for the microservices using Jest and Supertest, ensuring functionality and integration testing for APIs.
+  
+- **Load Testing**: 
+  - Managed with k6, creating test loads on services.
 
-## Containerization and Deployment Configurations
+- **Performance Testing**: 
+  - Managed with k6, simulating performance under load.
 
-### 1. Containerization with Docker
+---
 
-- Client(front end) and backend microservices are containerized using Docker for consistent deployment across environments.
+### 5. **Monitoring**
+- **Metrics Monitoring**: 
+  - Prometheus and Grafana are integrated to monitor the health and performance of the system locally, providing insights into resource utilization and metrics.
+  
+- **HPA Monitoring**: 
+  - HPA configurations and status can be monitored effectively.
 
-### 2. Cloud Deployment with Kubernetes
+---
 
-- All services are deployed on DigitalOcean’s Kubernetes cluster.
-- Kubernetes Deployment and Service YAML files are used to manage application lifecycle and networking.
+### 6. **Database**
+- **PostgreSQL Cluster**: 
+  - PostgreSQL is utilized as the database, hosted on DigitalOcean.
 
-### 3. Horizontal Pod Autoscaling (HPA)
+- **Redis Caching**: 
+  - Redis is deployed with Kubernetes and used for caching in the backend services.
 
-- HPA is configured for all microservices to automatically scale based on CPU utilization, ensuring optimal performance under varying loads.
+---
 
-### 4. Resource Limitation
+### 7. **Cloud Deployment**
+- **Domain Registration and Configuration**: 
+  - Registered and configured the domain **district12.xyz** through NameCheap for seamless access to the application.
 
-- Resource limitation applied for all deployments to prevent exhaustion of resources.
+- **Deployment with Ingress and Kong**: 
+  - Deployed the full website using an Ingress controller with Kong and Helm, effectively managing routing for multiple subdomains.
 
-## Testing
+- **Preflight Request Handling and CORS Configuration**: 
+  - Implemented CORS policies to properly handle preflight requests, ensuring secure communication between the client and backend services.
 
-### 1. Functional Testing
+- **HTTPS Protocol**: 
+  - Configured Ingress, Cluster Issuer, and Cert-Manager to switch from HTTP to HTTPS protocol.
 
-- Comprehensive test suites are written for the microservices using Jest and Supertest, ensuring functionality and integration testing for APIs.
+---
 
-### 2. Load Testing
+### 8. **Continuous Integration and Deployment**
+- **GitHub Actions**: 
+  - Continuous integration and deployment pipelines are set up using GitHub Actions, although further testing is required.
 
-- Manged with k6 with test load created on services
+---
 
-### 3. Performance Testing
+### 9. **Monitoring Tools**
+- **Prometheus Integration**: 
+  - Prometheus is deployed alongside the cloud infrastructure to monitor the performance and health of the microservices.
 
-- Manged with k6 with test load created on services
+- **Grafana Integration**: 
+  - Grafana is deployed alongside the cloud infrastructure to visualize the performance and health of the microservices.
 
-## Monitoring
+---
 
-### 1. Metrics Monitoring
-
-- Prometheus and Grafana are integrated to monitor the health and performance of the system locally, for a node server, providing insights into resource utilization and metrics
-
-### 1. HPA Monitoring
-
-- HPA Configuration and status can be monitored.
-
-## Database
-
-### 1. PostgreSQL cluster
-
-- PostgreSQL is used for database with pg cluster hosted on DigitalOcean.
-
-### 2. Redis Caching
-
-- Redis is deployed with k8s and used for caching in the backend services.
-
-## Cloud Deployment
-
-### 1. Domain Registration and Configuration
-
-- Registered and configured the domain district12.xyz through NameCheap for seamless access to the application.
-
-### 2. Deployment with Ingress and Kong
-
-- Deployed full website using an Ingress controller with Kong and Helm, managing routing for multiple subdomains effectively.
-
-### 3. Preflight Request Handling and CORS Configuration
-
-- Implemented CORS policies to properly handle preflight requests, ensuring secure communication between the client and backend services.
-
-### 4. HTTPS Protocol
-
-- Configured ingress, cluster issuer and cert-manager to switch to https protocol from http
-
-## GitHub Actions
-
-- Continuous integration and deployment pipelines are set up using GitHub Actions but require further testing.
-
-## Prometheus Integration
-
-- Prometheus is deployed alongside the cloud infrastructure to monitor the performance and health of the microservices.
-
-## Grafana Integration
-
-- Grafana is deployed alongside the cloud infrastructure to visualize the performance and health of the microservices.
+## Conclusion
+This project showcases a robust microservices architecture with advanced deployment and monitoring configurations, ensuring high availability, scalability, and maintainability.
