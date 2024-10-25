@@ -1,17 +1,52 @@
 # Project Overview: Microservices Architecture
 
-## Features Completed
+## Flow of Application
+
+1. **User Registration/Login**: 
+   - Users begin by registering or logging in
+   - **Managed by**: **auth-service**
+
+2. **Train Search**: 
+   - Upon successful authentication, users can select their **source**, **destination**, and **date** to retrieve a list of available trains
+   - **Managed by**: **train-service**
+
+3. **Train Selection and Pricing**: 
+   - After browsing the available options, users can select a train to view its layout. The **pricing-service** calculates the ticket prices based on user selection.
+   - **Managed by**: **pricing-service**
+
+4. **Ticket Management**: 
+   - If users decide to select a ticket, a request is sent to the **cache-service**, which updates the availability status of the ticket, making it unavailable for other users.
+   - If users decide to deselect a ticket, a request is sent to the **cache-service**, which updates the availability status of the ticket, making it available for other users.
+   - **Managed by**: **cache-service**
+
+5. **Ticket Purchase**: 
+   - When users are ready to proceed, they can select one or multiple tickets and click the "Pay for Tickets" button. This action denotes the payment process.
+   - **Managed by**: **ticket-service**
+
+6. **Payment Processing**: 
+   - After the payment is successfully processed, the **ticket-service** adds the purchased tickets to the database. This process is securely authorized by the **auth-service**, ensuring that only authenticated users can make bookings.
+   - **Managed by**: **ticket-service** (authorized by **auth-service**)
+
+
+## Targets Completed
 
 ### 1. **Microservices Architecture**
+
+#### **Service Discovery**
 - **Service-Oriented Architecture**: 
-  - The backend is divided into multiple microservices:
+  - The backend is divided into multiple microservices, enabling easy discovery and interaction among them:
     - **auth-service**: Handles user authentication and validation (Node.js).
     - **train-service**: Manages train information (Django).
     - **ticket-service**: Facilitates the ticket booking process (Node.js).
     - **pricing-service**: Manages ticket pricing (Node.js).
     - **cache-service**: Manages ticket availability and ticket booking process locking at the cache level (Node.js).
     - **web-service**: Serves the UI (Node.js).
-  - Each service is developed in separate repositories and operates independently.
+
+#### **Service Build**
+- **Independent Development**: 
+  - Each microservice is developed in separate repositories, allowing teams to work independently and deploy services without affecting others.
+- **Technology Stack**: 
+  - Services leverage a mix of technologies, with Node.js and Django chosen based on specific use cases and team expertise.
 
 ### 2. **Inter-Service Communication**
 - **HTTP Requests**: 
@@ -96,6 +131,3 @@
   - Grafana is deployed alongside the cloud infrastructure to visualize the performance and health of the microservices.
 
 ---
-
-## Conclusion
-This project showcases a robust microservices architecture with advanced deployment and monitoring configurations, ensuring high availability, scalability, and maintainability.
