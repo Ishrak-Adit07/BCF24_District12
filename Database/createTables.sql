@@ -18,7 +18,7 @@ CREATE TABLE stations (
 );
 
 CREATE TABLE schedules (
-  schedule_id VARCHAR(100) PRIMARY KEY,
+    schedule_id VARCHAR(100) PRIMARY KEY,
     train_id VARCHAR(100) REFERENCES trains(train_id),
     from_station_id VARCHAR(100) REFERENCES stations(station_id),
     to_station_id VARCHAR(100) REFERENCES stations(station_id),
