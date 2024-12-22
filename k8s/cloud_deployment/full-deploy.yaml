@@ -279,7 +279,7 @@ metadata:
   name: tick12-trainjs-service
 spec:
   selector:
-    app: cache
+    app: trainjs
   ports:
     - protocol: TCP
       port: 8004
