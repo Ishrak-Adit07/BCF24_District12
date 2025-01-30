@@ -4,7 +4,8 @@
 👥 **Team:** **District12**  
 🔗 **Teammates:** 
 - [Md. As-aid Rahman](https://github.com/aar-rafi) 
-- [Irtiaz Kabir](https://github.com/irtiaz)   
+- [Irtiaz Kabir](https://github.com/irtiaz)
+
 🏆 **Achievement:** **Champions**
 
 ### Architecture Diagram
